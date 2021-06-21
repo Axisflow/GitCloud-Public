@@ -3,10 +3,27 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body style="display:flex;">
-    <script type="text/javascript"> function goto() { document.location.href = "https://axialflow.github.io"; } function ok() { } function test() { } </script>
-    <dialog open="true" style="position:inherit; padding: 0 0 0 0;border-width: 1px;align-items:center;justify-content:center;">
-        <div style="background-color:lightgray;"><p style="margin-top:0;">身高計算機　　　　　　　　　　　　　　　　　　<button onclick="goto();" style="background-color:red;color:white;">X</button></p></div>
-        <div style="text-align:center;"><p>請輸入你的身高：<input id="value" type="text" />cm</p></div>
+    <script type="text/javascript">
+        function rad(axis) {
+            if (axis == "height") {
+                var h = screen.height;
+                return Math.random() * h;
+            }
+            if (axis == "width") {
+                var w = screen.width;
+                return Math.random() * w;
+            }
+        }
+
+        function goto() { document.location.href = "../.."; }
+
+        function ok() { }
+
+        function test() { }
+    </script>
+    <dialog open="true" style="background-color: rgb(235,235,235); position: inherit; padding: 0 0 0 0; border-width: 1px; align-items: center; justify-content: center;">
+        <div style="background-color:white;"><p style="margin-top:0;">身高計算機　　　　　　　　　　　　　　　　　　<button onclick="goto();" style="background-color:red;color:white;">X</button></p></div>
+        <div style="text-align:center;"><p>請輸入你的身高：<input id="value" type="number" />cm</p></div>
         <div style="text-align:center;"><p><button onclick="ok();">確定</button>　　　<button onclick="test();">Test</button></p></div>
     </dialog>
 
