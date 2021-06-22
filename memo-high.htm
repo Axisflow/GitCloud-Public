@@ -20,12 +20,15 @@
         }
 
         function goto() { document.location.href = "../.."; }
+        function clear(obj_id) {
+            document.getElementById("result_" + obj_id).remove();
+        }
 
         var resultCount = 0;
         function ok() {
             resultCount++;
             var v = document.getElementById("value").value;
-            document.getElementById("result").innerHTML += "<div id=\"result_" + resultCount + "\" style=\"position:absolute; background-color: rgb(235,235,235); padding: 0 0 0 0; border-width: 1px;top:" + rad("height") + "px;left:" + rad("width") + "px;margin:0;\">\r\n        <div style=\"padding-left: 5px; background-color: white; line-height: 0;\"><p style=\"margin-top:0;\">\u7D50\u679C\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000<button onclick=\"clear(" + resultCount + ");\" style=\"background-color:red;color:white;\">X<\/button><\/p><\/div>\r\n        <div><p style=\"margin: 16px;display:flex;\"><img style=\"justify-content: center;\" height=\"32\" width=\"32\" src=\"i.png\" \/>\u3000\u4F60\u7684\u8EAB\u9AD8\u70BA " + v + "cm<\/p><\/div>\r\n        <div style=\"text-align: right; padding-right: 5px;background-color:white;\"><p style=\"padding-top:5px; padding-bottom:5px;margin-bottom:0;\"><button onclick=\"clear(" + resultCount + ");\">OK<\/button><\/p><\/div>\r\n    <\/div>";
+            document.getElementById("result").innerHTML += "<div id=\"result_" + resultCount + "\" style=\"position:absolute; background-color: rgb(235,235,235); padding: 0 0 0 0; border-width: 1px;top:" + rad("height") + "px;left:" + rad("width") + "px;margin:0;\">\r\n        <div style=\"padding-left: 5px; background-color: white; line-height: 0;\"><p style=\"margin-top:0;\">\u7D50\u679C\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000<button onclick=\"wait.push(" + resultCount + ");\" style=\"background-color:red;color:white;\">X<\/button><\/p><\/div>\r\n        <div><p style=\"margin: 16px;display:flex;\"><img style=\"justify-content: center;\" height=\"32\" width=\"32\" src=\"i.png\" \/>\u3000\u4F60\u7684\u8EAB\u9AD8\u70BA " + v + "cm<\/p><\/div>\r\n        <div style=\"text-align: right; padding-right: 5px;background-color:white;\"><p style=\"padding-top:5px; padding-bottom:5px;margin-bottom:0;\"><button onclick=\"wait.push(" + resultCount + ");\">OK<\/button><\/p><\/div>\r\n    <\/div>";
         }
 
         var testExist = false;
@@ -35,6 +38,17 @@
             }
 
             testExist = true;
+        }
+
+        var wait=[0];
+        var timeID = setTimeout(exe, 250);
+        function exe() {
+            if (wait.length != 0) {
+                var last = wait[wait.length - 1];
+                wait.pop();
+                clear(last);
+            }
+            var next = setTimeout(exe, 250);
         }
     </script>
     <section id="result"></section>
@@ -48,10 +62,7 @@
         <div><p style="margin: 16px;display:flex;"><img style="justify-content: center;" height="32" width="32" src="i.png" />　你的身高為 cm</p></div>
         <div style="text-align: right; padding-right: 5px;background-color:white;"><p style="padding-top:5px; padding-bottom:5px;margin-bottom:0;"><button onclick="clear(0);">OK</button></p></div>
     </div>
-    <script type="text/javascript">
-        function clear(obj_id) {
-            document.getElementById("result_" + obj_id).remove();
-        }
+    <script>
     </script>
 </body>
 </html>
