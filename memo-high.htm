@@ -40,7 +40,7 @@
             testExist = true;
         }
 
-        var wait=[0];
+        var wait=[];
         var timeID = setTimeout(exe, 250);
         function exe() {
             if (wait.length != 0) {
@@ -58,9 +58,9 @@
         <div style="text-align:right;padding-right:5px;background-color:white;"><p style="padding-top: 5px; padding-bottom: 5px; margin-bottom: 0;"><button onclick="ok();">確定</button> <button onclick="test();">Test</button></p></div>
     </div>
     <div id="result_0" style="position:absolute; background-color: rgb(235,235,235); padding: 0 0 0 0; border-width: 1px;top:0;left:0;margin:0;">
-        <div style="padding-left: 5px; background-color: white; line-height: 0;"><p style="margin-top:0;">結果　　　　　　　　　　　　　<button onclick="clear(0);" style="background-color:red;color:white;">X</button></p></div>
+        <div style="padding-left: 5px; background-color: white; line-height: 0;"><p style="margin-top:0;">結果　　　　　　　　　　　　　<button onclick="wait.push(0);" style="background-color:red;color:white;">X</button></p></div>
         <div><p style="margin: 16px;display:flex;"><img style="justify-content: center;" height="32" width="32" src="i.png" />　你的身高為 cm</p></div>
-        <div style="text-align: right; padding-right: 5px;background-color:white;"><p style="padding-top:5px; padding-bottom:5px;margin-bottom:0;"><button onclick="clear(0);">OK</button></p></div>
+        <div style="text-align: right; padding-right: 5px;background-color:white;"><p style="padding-top:5px; padding-bottom:5px;margin-bottom:0;"><button onclick="wait.push(0);">OK</button></p></div>
     </div>
     <script>
     </script>
