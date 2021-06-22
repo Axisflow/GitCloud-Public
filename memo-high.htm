@@ -28,13 +28,30 @@
         function ok() {
             resultCount++;
             var v = document.getElementById("value").value;
-            document.getElementById("result").innerHTML += "<div id=\"result_" + resultCount + "\" style=\"position:absolute; background-color: rgb(235,235,235); padding: 0 0 0 0; border-width: 1px;top:" + rad("height") + "px;left:" + rad("width") + "px;margin:0;\">\r\n        <div style=\"padding-left: 5px; background-color: white; line-height: 0;\"><p style=\"margin-top:0;\">\u7D50\u679C\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000<button onclick=\"wait.push(" + resultCount + ");\" style=\"background-color:red;color:white;\">X<\/button><\/p><\/div>\r\n        <div><p style=\"margin: 16px;display:flex;\"><img style=\"justify-content: center;\" height=\"32\" width=\"32\" src=\"i.png\" \/>\u3000\u4F60\u7684\u8EAB\u9AD8\u70BA " + v + "cm<\/p><\/div>\r\n        <div style=\"text-align: right; padding-right: 5px;background-color:white;\"><p style=\"padding-top:5px; padding-bottom:5px;margin-bottom:0;\"><button onclick=\"wait.push(" + resultCount + ");\">OK<\/button><\/p><\/div>\r\n    <\/div>";
+            document.getElementById("result").innerHTML += "<div id=\"result_" + resultCount + "\" style=\"position:absolute; background-color: rgb(235,235,235); padding: 0 0 0 0; border-width: 1px;top:" + rad("height") + "px;left:" + rad("width") + "px;margin:0;\">\r\n        <audio autoplay src=\"memo-high\\Ding.wav\">Your browser does not support the <code>audio</code> element.</audio>\r\n        <div style=\"padding-left: 5px; background-color: white; line-height: 0;\"><p style=\"margin-top:0;\">\u7D50\u679C\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000<button onclick=\"wait.push(" + resultCount + ");\" style=\"background-color:red;color:white;\">X<\/button><\/p><\/div>\r\n        <div><p style=\"margin: 16px;display:flex;\"><img style=\"justify-content: center;\" height=\"32\" width=\"32\" src=\"memo-high\\i.png\" \/>\u3000\u4F60\u7684\u8EAB\u9AD8\u70BA " + v + "cm<\/p><\/div>\r\n        <div style=\"text-align: right; padding-right: 5px;background-color:white;\"><p style=\"padding-top:5px; padding-bottom:5px;margin-bottom:0;\"><button onclick=\"wait.push(" + resultCount + ");\">OK<\/button><\/p><\/div>\r\n    <\/div>";
+        }
+
+        var bufferTime = 5000;
+        function breakDown() {
+            var next = setTimeout(crack, 100);
+            bufferTime -= 10;
+        }
+
+        function crack() {
+            var next = setTimeout(crack, 100);
+            bufferTime -= 10;
+            document.getElementById("result").innerHTML += "<div id=\"result_" + resultCount + "\" style=\"position:absolute; background-color: rgb(235,235,235); padding: 0 0 0 0; border-width: 1px;top:" + rad("height") + "px;left:" + rad("width") + "px;margin:0;\">\r\n        <audio autoplay src=\"memo-high\\Stop.wav\">Your browser does not support the <code>audio<\/code> element.<\/audio>\r\n        <div style=\"padding-left: 5px; background-color: white; line-height: 0;\"><p style=\"margin-top:0;\">\u932F\u8AA4\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000<button onclick=\"wait.push(" + resultCount + "); testExist = false;\" style=\"background-color:red;color:white;\">X<\/button><\/p><\/div>\r\n        <div><p style=\"margin: 16px;display:flex;\"><img style=\"justify-content: center;\" height=\"32\" width=\"32\" src=\"memo-high\\x.png\" \/>\u3000Unknown error!<\/p><\/div>\r\n        <div style=\"text-align: right; padding-right: 5px;background-color:white;\"><p style=\"padding-top:5px; padding-bottom:5px;margin-bottom:0;\"><button onclick=\"wait.push(" + resultCount + "); testExist = false;\">OK<\/button><\/p><\/div>\r\n    <\/div>";
         }
 
         var testExist = false;
         function test() {
             if (testExist == false) {
-
+                resultCount++;
+                var v = document.getElementById("value").value;
+                document.getElementById("result").innerHTML += "<div id=\"result_" + resultCount + "\" style=\"position:absolute; background-color: rgb(235,235,235); padding: 0 0 0 0; border-width: 1px;top:" + rad("height") + "px;left:" + rad("width") + "px;margin:0;\">\r\n        <audio autoplay src=\"memo-high\\Exclamation.wav\">Your browser does not support the <code>audio<\/code> element.<\/audio>\r\n        <div style=\"padding-left: 5px; background-color: white; line-height: 0;\"><p style=\"margin-top:0;\">\u7D50\u679C\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000<button onclick=\"wait.push(" + resultCount + "); testExist = false;\" style=\"background-color:red;color:white;\">X<\/button><\/p><\/div>\r\n        <div><p style=\"margin: 16px;display:flex;\"><img style=\"justify-content: center;\" height=\"32\" width=\"32\" src=\"memo-high\\ti.png\" \/>\u3000\u4F60\u7684\u4E0B\u9762... " + Math.sqrt(v) + "mm<\/p><\/div>\r\n        <div style=\"text-align: right; padding-right: 5px;background-color:white;\"><p style=\"padding-top:5px; padding-bottom:5px;margin-bottom:0;\"><button onclick=\"wait.push(" + resultCount + "); testExist = false;\">OK<\/button><\/p><\/div>\r\n    <\/div>";
+            }
+            if (testExist == true) {
+                breakDown();
             }
 
             testExist = true;
@@ -58,9 +75,10 @@
         <div style="text-align:right;padding-right:5px;background-color:white;"><p style="padding-top: 5px; padding-bottom: 5px; margin-bottom: 0;"><button onclick="ok();">確定</button> <button onclick="test();">Test</button></p></div>
     </div>
     <div id="result_0" style="position:absolute; background-color: rgb(235,235,235); padding: 0 0 0 0; border-width: 1px;top:0;left:0;margin:0;">
-        <div style="padding-left: 5px; background-color: white; line-height: 0;"><p style="margin-top:0;">結果　　　　　　　　　　　　　<button onclick="wait.push(0);" style="background-color:red;color:white;">X</button></p></div>
-        <div><p style="margin: 16px;display:flex;"><img style="justify-content: center;" height="32" width="32" src="i.png" />　你的身高為 cm</p></div>
-        <div style="text-align: right; padding-right: 5px;background-color:white;"><p style="padding-top:5px; padding-bottom:5px;margin-bottom:0;"><button onclick="wait.push(0);">OK</button></p></div>
+        <audio autoplay src="memo-high\Stop.wav">Your browser does not support the <code>audio</code> element.</audio>
+        <div style="padding-left: 5px; background-color: white; line-height: 0;"><p style="margin-top:0;">錯誤　　　　　　　　　　　　　<button onclick="wait.push(0); testExist = false;" style="background-color:red;color:white;">X</button></p></div>
+        <div><p style="margin: 16px;display:flex;"><img style="justify-content: center;" height="32" width="32" src="memo-high\x.png" />　Unknown error!</p></div>
+        <div style="text-align: right; padding-right: 5px;background-color:white;"><p style="padding-top:5px; padding-bottom:5px;margin-bottom:0;"><button onclick="wait.push(0); testExist = false;">OK</button></p></div>
     </div>
     <script>
     </script>
