@@ -18,6 +18,13 @@
 
 (function () {
     'use strict';
+    var nowHSVer = 1;
+
+    var temp;
+
+    if ((temp = GM_getValue(hsver)) == undefined || temp < nowHSVer) {
+
+    }
 
     if (confirm("Auto?")) {
         let nowLoc = location.pathname;
@@ -73,6 +80,9 @@
 
             document.getElementById('b2').click();
             document.getElementsByClassName('ajs-ok')[1].click();
+
+
+            window.close();
         }
     }
 })();
