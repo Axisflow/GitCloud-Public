@@ -8,8 +8,8 @@
 // @author       Axisflow
 // @match        https://avenger2.nchu.edu.tw/*
 // @icon         https://www.nchu.edu.tw/favicon.ico
-// @updateURL    https://axialflow.github.io/GitCloud-Public/Auto-NCHU-HealthSurvey/autohs.meta.js
-// @downloadURL  https://axialflow.github.io/GitCloud-Public/Auto-NCHU-HealthSurvey/autohs.user.js
+// @updateURL    https://axisflow.github.io/GitCloud-Public/Auto-NCHU-HealthSurvey/autohs.meta.js
+// @downloadURL  https://axisflow.github.io/GitCloud-Public/Auto-NCHU-HealthSurvey/autohs.user.js
 // @grant        unsafeWindow
 // @grant        GM_setValue
 // @grant        GM_getValue
